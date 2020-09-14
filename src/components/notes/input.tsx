@@ -36,7 +36,7 @@ export const NoteInput: React.FC<IProps2> = ({
             fontSize: ["3", "4", "4", "4", "4", "5", "5", "5"],
           }}
         >
-          {label}
+          {label}:
         </Text>
       </Box>
       <Box
