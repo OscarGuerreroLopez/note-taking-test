@@ -3,10 +3,13 @@ import { Flex, Text } from "rebass";
 
 import { CustomCard } from "../../components/CustomCard";
 
-interface IProps {}
+interface IProps {
+  title: string;
+  body: string;
+}
 const fontSize = ["1", "2", "2", "3", "3", "4"];
 
-export const Note: React.FC<IProps> = (): JSX.Element => {
+export const Note: React.FC<IProps> = ({ title, body }): JSX.Element => {
   return (
     <Flex
       justifyContent="center"
@@ -16,7 +19,7 @@ export const Note: React.FC<IProps> = (): JSX.Element => {
       }}
     >
       <CustomCard>
-        <Flex justifyContent="center">
+        <Flex justifyContent="center" flexWrap="wrap">
           <Text
             sx={{
               fontSize,
@@ -25,7 +28,14 @@ export const Note: React.FC<IProps> = (): JSX.Element => {
               width: "100%",
             }}
           >
-            Display notes:
+            {title}
+          </Text>
+          <Text
+            sx={{
+              width: "100%",
+            }}
+          >
+            {body}
           </Text>
         </Flex>
       </CustomCard>
