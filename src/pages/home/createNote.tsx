@@ -1,22 +1,30 @@
-import React, { FormEvent, useState } from "react";
-import { Flex, Text, Box, Button } from "rebass";
+import React, { ChangeEvent, FormEvent, useState } from "react";
+import { Flex, Text, Button } from "rebass";
 import { CustomCard } from "../../components/CustomCard";
-import { Input, Textarea } from "@rebass/forms";
+
+import { NoteInput } from "../../components/notes/input";
 
 interface IProps {}
 const fontSize = ["1", "2", "2", "3", "3", "4"];
 
 export const CreateNote: React.FC<IProps> = (): JSX.Element => {
   const [title, setTitle] = useState("");
+  const [note, setNote] = useState("");
 
   const onChangeTitle = (e: FormEvent<HTMLInputElement>): void => {
     e.preventDefault();
     setTitle(e.currentTarget.value);
   };
 
+  const onChangeNote = (e: ChangeEvent<HTMLTextAreaElement>): void => {
+    e.preventDefault();
+    setNote(e.currentTarget.value);
+  };
+
   const onClick = (): void => {
     console.log("You clicked me");
     console.log(title);
+    console.log(note);
   };
 
   return (
@@ -33,70 +41,19 @@ export const CreateNote: React.FC<IProps> = (): JSX.Element => {
           >
             Create a note:
           </Text>
-          <Flex flexWrap="wrap" width="80%">
-            <Box
-              sx={{
-                width: ["100%", "100%", "100%", "100%", "100%", "25%", "25%"],
-              }}
-            >
-              <Text
-                sx={{
-                  textAlign: ["left", "left", "left", "left", "left", "right"],
-                  mr: [0, 0, 0, 0, 0, 4, 4, 4],
-                  mb: [2, 2, 2, 2, 2, 0],
-                  fontSize: ["3", "4", "4", "4", "4", "5", "5", "5"],
-                }}
-              >
-                Title:
-              </Text>
-            </Box>
-            <Box
-              sx={{
-                width: ["100%", "100%", "100%", "100%", "100%", "50%", "50%"],
-              }}
-            >
-              <Input
-                id="title"
-                name="title"
-                type="title"
-                placeholder="New Note"
-                onChange={onChangeTitle}
-              />
-            </Box>
-          </Flex>
-          <Flex flexWrap="wrap" width="80%">
-            <Box
-              sx={{
-                width: ["100%", "100%", "100%", "100%", "100%", "25%", "25%"],
-              }}
-            >
-              <Text
-                sx={{
-                  textAlign: ["left", "left", "left", "left", "left", "right"],
-                  mr: [0, 0, 0, 0, 0, 4, 4, 4],
-                  mb: [2, 2, 2, 2, 2, 0],
-                  mt: [2, 2, 2, 2, 2, 0],
-                  fontSize: ["3", "4", "4", "4", "4", "5", "5", "5"],
-                }}
-              >
-                Body:
-              </Text>
-            </Box>
-            <Box
-              sx={{
-                width: ["100%", "100%", "100%", "100%", "100%", "50%", "50%"],
-              }}
-            >
-              <Textarea
-                id="comment"
-                name="comment"
-                maxWidth="100%"
-                minWidth="100%"
-                minHeight="100%"
-                maxHeight="200px"
-              />
-            </Box>
-          </Flex>
+
+          <NoteInput
+            onChangeNote={onChangeNote}
+            onChangeTitle={onChangeTitle}
+            label={"Title"}
+            isTitle={true}
+          />
+          <NoteInput
+            onChangeNote={onChangeNote}
+            onChangeTitle={onChangeTitle}
+            label={"Body"}
+            isTitle={false}
+          />
           <Flex
             sx={{
               justifyContent: "center",
