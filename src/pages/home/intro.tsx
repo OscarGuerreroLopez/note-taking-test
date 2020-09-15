@@ -19,16 +19,14 @@ export const Intro: React.FC<IProps> = (): JSX.Element => {
             Note Taker app
           </Text>
           <Text>
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ipsum is that it has a more-or-less normal
-            distribution of letters, as opposed to using 'Content here, content
-            here', making it look like readable English. Many desktop publishing
-            packages and web page editors now use Lorem Ipsum as their default
-            model text, and a search for 'lorem ipsum' will uncover many web
-            sites still in their infancy. Various versions have evolved over the
-            years, sometimes by accident, sometimes on purpose (injected humour
-            and the like).
+            This test is mobile friendly, go ahead and try different setups For
+            this test I used theme-ui with rebase for styling, not perfect but
+            the test was done in 4 hours so I did the best I could. My main
+            expertise is with node and typescript, so if you like this one
+            believe me, I can do a lot better in the back. I am a fullstack guy
+            but I would say that 60% Backend and 40% Frontend, since the
+            position I was offered was for a full stack but with more expertise
+            in backend with node……
           </Text>
         </Flex>
       </CustomCard>
