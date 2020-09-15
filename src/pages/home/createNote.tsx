@@ -1,15 +1,18 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { Flex, Text, Button } from "rebass";
-import { CustomCard } from "../../components/CustomCard";
+import { v4 as uuidv4 } from "uuid";
 
+import { CustomCard } from "../../components/CustomCard";
 import { NoteInput } from "../../components/notes/input";
+import { NotesContext, INote } from "../../context";
 
 interface IProps {}
 const fontSize = ["1", "2", "2", "3", "3", "4"];
 
 export const CreateNote: React.FC<IProps> = (): JSX.Element => {
   const [title, setTitle] = useState("");
-  const [note, setNote] = useState("");
+  const [body, setBody] = useState("");
+  const { notes, setNotes } = useContext(NotesContext);
 
   const onChangeTitle = (e: FormEvent<HTMLInputElement>): void => {
     e.preventDefault();
@@ -18,13 +21,18 @@ export const CreateNote: React.FC<IProps> = (): JSX.Element => {
 
   const onChangeNote = (e: ChangeEvent<HTMLTextAreaElement>): void => {
     e.preventDefault();
-    setNote(e.currentTarget.value);
+    setBody(e.currentTarget.value);
   };
 
   const onClick = (): void => {
-    console.log("You clicked me");
-    console.log(title);
-    console.log(note);
+    const id = uuidv4();
+    const newNote: INote = {
+      id,
+      title,
+      body,
+    };
+
+    setNotes((prevNotes: INote[]) => [...prevNotes, newNote]);
   };
 
   return (

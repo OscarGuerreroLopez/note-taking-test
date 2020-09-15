@@ -23,7 +23,7 @@
     "rebass": "^4.0.7",
     "theme-ui": "^0.3.1",
     "typescript": "~3.7.2",
-    "uuid": "^7.0.2"
+    "uuid": "^8.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

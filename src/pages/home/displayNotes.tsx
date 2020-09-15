@@ -1,9 +1,10 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import { Label, Select } from "@rebass/forms";
 import { Flex, Text, Box } from "rebass";
 
 import { CustomCard } from "../../components/CustomCard";
 import { Note } from "../../components/notes/note";
+import { NotesContext } from "../../context";
 
 interface IProps {}
 const fontSize = ["1", "2", "2", "3", "3", "4"];
@@ -11,10 +12,15 @@ const colors = ["yellow", "tomato", "orange", "pink", "blue"];
 
 export const DisplayNotes: React.FC<IProps> = (): JSX.Element => {
   const [color, setColor] = useState("yellow");
+  const { notes } = useContext(NotesContext);
 
   const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setColor(e.currentTarget.value);
   };
+
+  useEffect(() => {
+    console.log("@@@@@@@", notes);
+  }, [notes]);
 
   return (
     <>
@@ -54,6 +60,34 @@ export const DisplayNotes: React.FC<IProps> = (): JSX.Element => {
               </Select>
             </Box>
           </Flex>
+          <Note
+            title={"Hola Gilipollas"}
+            body={
+              "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here'"
+            }
+            color={color}
+          />
+          <Note
+            title={"Hola Gilipollas"}
+            body={
+              "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here'"
+            }
+            color={color}
+          />
+          <Note
+            title={"Hola Gilipollas"}
+            body={
+              "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here'"
+            }
+            color={color}
+          />
+          <Note
+            title={"Hola Gilipollas"}
+            body={
+              "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here'"
+            }
+            color={color}
+          />
           <Note
             title={"Hola Gilipollas"}
             body={
