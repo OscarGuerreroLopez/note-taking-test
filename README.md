@@ -37,7 +37,7 @@ $ yarn start
 
 # How to run the application tests
 
-Not yet completed, test was done in 4 hours and I did not have time to add test, wanted to present something right away before it was too late
+Not yet completed, at the end the test was done in 4 hours and I did not have time to add test, wanted to present something right away before it was too late. But maybe I over did it and thus I ran out of time
 
 ```bash
 
