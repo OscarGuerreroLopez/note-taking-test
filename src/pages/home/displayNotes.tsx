@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useContext, useEffect, useState } from "react";
+import React, { ChangeEvent, useContext, useState } from "react";
 import { Label, Select } from "@rebass/forms";
 import { Flex, Text, Box } from "rebass";
 
@@ -12,15 +12,24 @@ const colors = ["yellow", "tomato", "orange", "pink", "blue"];
 
 export const DisplayNotes: React.FC<IProps> = (): JSX.Element => {
   const [color, setColor] = useState("yellow");
-  const { notes } = useContext(NotesContext);
+  const { notes, setNotes } = useContext(NotesContext);
 
   const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setColor(e.currentTarget.value);
   };
 
-  useEffect(() => {
-    console.log("@@@@@@@", notes);
-  }, [notes]);
+  const onEdit = (id: string) => {
+    console.log("Cliked Edit", id);
+    console.log(notes);
+  };
+
+  const onDelete = (id: string) => {
+    console.log("Cliked Delete", id);
+    console.log(notes);
+    setNotes((prevNotes: INote[]) => {
+      return prevNotes.filter((item) => item.id !== id);
+    });
+  };
 
   return (
     <>
@@ -66,7 +75,10 @@ export const DisplayNotes: React.FC<IProps> = (): JSX.Element => {
               title={note.title}
               body={note.body}
               color={color}
+              id={note.id}
               key={note.id}
+              onEdit={onEdit}
+              onDelete={onDelete}
             />
           ))}
         </Flex>

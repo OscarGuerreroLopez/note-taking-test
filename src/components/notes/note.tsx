@@ -7,10 +7,20 @@ interface IProps {
   title: string;
   body: string;
   color: string;
+  id: string;
+  onEdit: (id: string) => void;
+  onDelete: (id: string) => void;
 }
 const fontSize = ["1", "2", "2", "3", "3", "4"];
 
-export const Note: React.FC<IProps> = ({ title, body, color }): JSX.Element => {
+export const Note: React.FC<IProps> = ({
+  title,
+  body,
+  color,
+  id,
+  onDelete,
+  onEdit,
+}): JSX.Element => {
   return (
     <Flex
       justifyContent="center"
@@ -45,7 +55,7 @@ export const Note: React.FC<IProps> = ({ title, body, color }): JSX.Element => {
                 textAlign: "center",
               }}
             >
-              <Button>Edit</Button>
+              <Button onClick={() => onEdit(id)}>Edit</Button>
             </Box>
 
             <Box
@@ -54,7 +64,7 @@ export const Note: React.FC<IProps> = ({ title, body, color }): JSX.Element => {
                 textAlign: "center",
               }}
             >
-              <Button>Delete</Button>
+              <Button onClick={() => onDelete(id)}>Delete</Button>
             </Box>
           </Flex>
         </Flex>
