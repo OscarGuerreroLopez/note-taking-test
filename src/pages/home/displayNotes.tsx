@@ -6,11 +6,17 @@ import { CustomCard } from "../../components/CustomCard";
 import { Note } from "../../components/notes/note";
 import { NotesContext, INote } from "../../context";
 
-interface IProps {}
+interface IProps {
+  setIsNew: (value: boolean) => void;
+  setNoteId: (id: string) => void;
+}
 const fontSize = ["1", "2", "2", "3", "3", "4"];
 const colors = ["yellow", "tomato", "orange", "pink", "blue"];
 
-export const DisplayNotes: React.FC<IProps> = (): JSX.Element => {
+export const DisplayNotes: React.FC<IProps> = ({
+  setIsNew,
+  setNoteId,
+}): JSX.Element => {
   const [color, setColor] = useState("yellow");
   const { notes, setNotes } = useContext(NotesContext);
 
@@ -19,13 +25,11 @@ export const DisplayNotes: React.FC<IProps> = (): JSX.Element => {
   };
 
   const onEdit = (id: string) => {
-    console.log("Cliked Edit", id);
-    console.log(notes);
+    setIsNew(false);
+    setNoteId(id);
   };
 
   const onDelete = (id: string) => {
-    console.log("Cliked Delete", id);
-    console.log(notes);
     setNotes((prevNotes: INote[]) => {
       return prevNotes.filter((item) => item.id !== id);
     });

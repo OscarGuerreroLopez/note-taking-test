@@ -1,4 +1,10 @@
-import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { Flex, Text, Button } from "rebass";
 import { v4 as uuidv4 } from "uuid";
 
@@ -6,13 +12,37 @@ import { CustomCard } from "../../components/CustomCard";
 import { NoteInput } from "../../components/notes/input";
 import { NotesContext, INote } from "../../context";
 
-interface IProps {}
+interface IProps {
+  isNew: boolean;
+  noteId: string;
+  setIsNew: (value: boolean) => void;
+  setNoteId: (id: string) => void;
+}
 const fontSize = ["1", "2", "2", "3", "3", "4"];
 
-export const CreateNote: React.FC<IProps> = (): JSX.Element => {
+export const CreateNote: React.FC<IProps> = ({
+  isNew,
+  noteId,
+  setIsNew,
+  setNoteId,
+}): JSX.Element => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const { setNotes } = useContext(NotesContext);
+  const { setNotes, notes } = useContext(NotesContext);
+
+  useEffect(() => {
+    let whatNoteToEdit = null;
+    if (!isNew) {
+      whatNoteToEdit = notes.find((note) => {
+        return note.id === noteId;
+      });
+    }
+
+    if (whatNoteToEdit) {
+      setTitle(whatNoteToEdit.title);
+      setBody(whatNoteToEdit.body);
+    }
+  }, [isNew, noteId, notes]);
 
   const onChangeTitle = (e: FormEvent<HTMLInputElement>): void => {
     e.preventDefault();
@@ -25,6 +55,29 @@ export const CreateNote: React.FC<IProps> = (): JSX.Element => {
   };
 
   const onClick = (): void => {
+    if (isNew) {
+      newNote();
+    } else {
+      editNote();
+    }
+  };
+
+  const editNote = () => {
+    notes.forEach((note: INote, index: number) => {
+      if (note.id === noteId) {
+        setNotes((prevNotes: INote[]) => {
+          prevNotes[index] = { id: noteId, title, body };
+          return prevNotes;
+        });
+      }
+    });
+    setTitle("");
+    setBody("");
+    setIsNew(true);
+    setNoteId("");
+  };
+
+  const newNote = () => {
     const id = uuidv4();
     const newNote: INote = {
       id,
@@ -49,7 +102,7 @@ export const CreateNote: React.FC<IProps> = (): JSX.Element => {
               width: "100%",
             }}
           >
-            Create a note:
+            {isNew ? "Create a" : "Edit the"} note:
           </Text>
 
           <NoteInput
