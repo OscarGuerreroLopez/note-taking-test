@@ -37,6 +37,8 @@ $ yarn start
 
 # How to run the application tests
 
+Not yet completed
+
 ```bash
 
 $ yarn test
