@@ -31,11 +31,13 @@ export const CreateNote: React.FC<IProps> = ({
   const { setNotes, notes } = useContext(NotesContext);
 
   useEffect(() => {
-    let whatNoteToEdit = null;
+    let whatNoteToEdit;
     if (!isNew) {
       whatNoteToEdit = notes.find((note) => {
         return note.id === noteId;
       });
+    } else {
+      whatNoteToEdit = null;
     }
 
     if (whatNoteToEdit) {

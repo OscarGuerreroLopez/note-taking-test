@@ -1,44 +1,44 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Note taking code test
 
-## Available Scripts
+Create a simple note-taking web application. A user should be able to:
 
-In the project directory, you can run:
+- Add a note
+- Edit a note
+- Delete a note
 
-### `yarn start`
+Also:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Each note should be in a colored rectangular box.
+- Box colors can be selected from a fixed list of colors.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+We want you to use React to complete the app. You can use any code scaffolding tool such as [Create React App](https://create-react-app.dev/) or similar to concentrate on the code. Be free to use plain Javascript or any variant such as Typescript, or any code testing framework.
 
-### `yarn test`
+We would value a lot if you add some tests to the solution. Don't aim for full coverage as it would take you a lot of extra time, adding a couple of simple cases would be fine.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+We won't be evaluating the appearance or the visual design so feel free to use unstyled HTML for the solution.
 
-### `yarn build`
+Completing the test should take you **2 hours or less**.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Once the test is completed, please add a note on this README with instructions to run the application and the tests. Assume the reviewer will know the tools so you don't have to explain how to install Npm or Yarn, just naming the needed commands would be fine.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+ZIP the final code and return it so it can be evaluated.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Thanks for your time!
 
-### `yarn eject`
+# How to run the application
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+$ yarn
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+$ yarn start
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
 
-## Learn More
+# How to run the application tests
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+$ yarn test
+
+```
