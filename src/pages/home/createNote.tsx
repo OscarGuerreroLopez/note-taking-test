@@ -12,7 +12,7 @@ const fontSize = ["1", "2", "2", "3", "3", "4"];
 export const CreateNote: React.FC<IProps> = (): JSX.Element => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const { notes, setNotes } = useContext(NotesContext);
+  const { setNotes } = useContext(NotesContext);
 
   const onChangeTitle = (e: FormEvent<HTMLInputElement>): void => {
     e.preventDefault();
@@ -33,6 +33,8 @@ export const CreateNote: React.FC<IProps> = (): JSX.Element => {
     };
 
     setNotes((prevNotes: INote[]) => [...prevNotes, newNote]);
+    setTitle("");
+    setBody("");
   };
 
   return (
@@ -55,12 +57,14 @@ export const CreateNote: React.FC<IProps> = (): JSX.Element => {
             onChangeTitle={onChangeTitle}
             label={"Title"}
             isTitle={true}
+            title={title}
           />
           <NoteInput
             onChangeNote={onChangeNote}
             onChangeTitle={onChangeTitle}
             label={"Body"}
             isTitle={false}
+            body={body}
           />
           <Flex
             sx={{

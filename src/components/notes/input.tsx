@@ -5,20 +5,19 @@ import { Input, Textarea } from "@rebass/forms";
 interface IProps {
   onChangeTitle: (e: FormEvent<HTMLInputElement>) => void;
   onChangeNote: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-}
-
-interface IProps2 {
-  onChangeTitle: (e: FormEvent<HTMLInputElement>) => void;
-  onChangeNote: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   label: string;
   isTitle: boolean;
+  title?: string;
+  body?: string;
 }
 
-export const NoteInput: React.FC<IProps2> = ({
+export const NoteInput: React.FC<IProps> = ({
   onChangeNote,
   onChangeTitle,
   label,
   isTitle,
+  title,
+  body,
 }): JSX.Element => {
   return (
     <Flex flexWrap="wrap" width="80%">
@@ -50,6 +49,7 @@ export const NoteInput: React.FC<IProps2> = ({
             name="title"
             type="title"
             onChange={onChangeTitle}
+            value={title}
           />
         )}
 
@@ -62,6 +62,7 @@ export const NoteInput: React.FC<IProps2> = ({
             minHeight="100%"
             maxHeight="200px"
             onChange={onChangeNote}
+            value={body}
           />
         )}
       </Box>
