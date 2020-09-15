@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Text } from "rebass";
+import { Flex, Text, Button, Box } from "rebass";
 
 import { CustomCard } from "../../components/CustomCard";
 
@@ -38,6 +38,25 @@ export const Note: React.FC<IProps> = ({ title, body, color }): JSX.Element => {
           >
             {body}
           </Text>
+          <Flex flexWrap="wrap" width="100%">
+            <Box
+              sx={{
+                width: "50%",
+                textAlign: "center",
+              }}
+            >
+              <Button>Edit</Button>
+            </Box>
+
+            <Box
+              sx={{
+                width: "50%",
+                textAlign: "center",
+              }}
+            >
+              <Button>Delete</Button>
+            </Box>
+          </Flex>
         </Flex>
       </CustomCard>
     </Flex>
